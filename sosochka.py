@@ -28,7 +28,7 @@ async def huge(ctx, pers: discord.Member):
         write = random.choice(write_random)
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, delete_after=10)
 
 @bot.command(pass_context = True)
 async def kiss(ctx, pers: discord.Member):
@@ -49,7 +49,7 @@ async def kiss(ctx, pers: discord.Member):
         write = random.choice(write_random)
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, delete_after=10)
 
 @bot.command(pass_context = True)
 async def beat(ctx, pers: discord.Member):
@@ -70,7 +70,7 @@ async def beat(ctx, pers: discord.Member):
         write = random.choice(write_random)
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, delete_after=10)
 
 @bot.command(pass_context = True)
 async def baka(ctx, pers: discord.Member):
@@ -91,7 +91,7 @@ async def baka(ctx, pers: discord.Member):
         write = random.choice(write_random)
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, delete_after=10)
 @bot.command(pass_context = True)
 async def secret(ctx):
     url_random = [
@@ -109,7 +109,7 @@ async def secret(ctx):
     write = write[y]
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.send(embed=embed)
+    await ctx.send(embed=embed, delete_after=10)
 
 
 #конец действий
