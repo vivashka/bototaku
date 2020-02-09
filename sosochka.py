@@ -104,7 +104,6 @@ async def secret(ctx):
               ]
     url_object = int(len(url_random)) - 1
     x = (0, url_object)
-    await discord.Client.close(bot)
     y = random.choice(x)
     url = url_random[y]
     write = write[y]
