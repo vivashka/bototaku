@@ -58,7 +58,7 @@ async def beat(ctx, pers: discord.Member):
                       'https://i.gifer.com/7zBH.gif',
                       'https://i.gifer.com/777c.gif',
                       'https://data.whicdn.com/images/218727150/original.gif',
-                      'https://pa1.narvii.com/7296/e35a74427cb6801a25bf59880dd9df11d9c2bf8ar1-400-225_hq.gif'
+                      'https://i.pinimg.com/originals/c0/be/39/c0be39358dd4b11101f4f23241ddbe3c.gif'
                       )
         url = random.choice(url_random)
         author = ctx.author
