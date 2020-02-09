@@ -116,3 +116,4 @@ async def secret(ctx):
 #конец действий
 
 token = os.environ.get('BOT_TOKEN')
+bot.run(token)
