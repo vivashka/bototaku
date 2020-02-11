@@ -10,7 +10,7 @@ client = discord.Client()
 
 # Начало действий
 @bot.command(pass_context = True)
-async def huge(ctx, pers: discord.Member.mention):
+async def huge(ctx, pers: discord.Member):
 
         url_random = ('https://animegif.ru/up/photos/album/oct17/171023_8359.gif',
                 'https://i.gifer.com/G8Vg.gif',
