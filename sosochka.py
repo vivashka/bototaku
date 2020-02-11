@@ -36,7 +36,7 @@ async def on_arg(ctx, error):
         
 
 @bot.command(pass_context = True)
-async def kiss(ctx, pers: discord.Member.mention):
+async def kiss(ctx, pers: discord.Member):
 
         url_random = ('https://i.gifer.com/2Ugo.gif',
                       'https://i.pinimg.com/originals/99/c4/18/99c41869ba1551575aefd9c8ffc533de.gif',
@@ -61,7 +61,7 @@ async def on_arg(ctx, error):
         await ctx.send('нужно упомянуть человека!')
         
 @bot.command(pass_context = True)
-async def beat(ctx, pers: discord.Member.mention):
+async def beat(ctx, pers: discord.Member):
 
         url_random = ('https://cs.pikabu.ru/post_img/2013/10/04/9/1380898436_18882066.gif',
                       'https://i.gifer.com/7zBH.gif',
@@ -86,7 +86,7 @@ async def on_arg(ctx, error):
         await ctx.send('нужно упомянуть человека!')
         
 @bot.command(pass_context = True)
-async def baka(ctx, pers: discord.Member.mention):
+async def baka(ctx, pers: discord.Member):
 
         url_random = ('https://thumbs.gfycat.com/SandyTheseAmericanwarmblood-small.gif',
                       'https://gifimage.net/wp-content/uploads/2017/09/baka-gif-4.gif',
