@@ -111,7 +111,11 @@ async def secret(ctx):
     embed.set_image(url=url)
     await ctx.send(embed=embed, delete_after=10)
 
-
+@bot.event
+async def arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+        
 #конец действий
 
 token = os.environ.get('BOT_TOKEN')
