@@ -29,6 +29,11 @@ async def huge(ctx, pers: discord.Member):
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
         await ctx.send(embed=embed, delete_after=10)
+@huge.error
+async def on_arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+        
 
 @bot.command(pass_context = True)
 async def kiss(ctx, pers: discord.Member):
@@ -50,7 +55,11 @@ async def kiss(ctx, pers: discord.Member):
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
         await ctx.send(embed=embed, delete_after=10)
-
+@kiss.error
+async def on_arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+        
 @bot.command(pass_context = True)
 async def beat(ctx, pers: discord.Member):
 
@@ -71,7 +80,11 @@ async def beat(ctx, pers: discord.Member):
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
         await ctx.send(embed=embed, delete_after=10)
-
+@beat.error
+async def on_arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+        
 @bot.command(pass_context = True)
 async def baka(ctx, pers: discord.Member):
 
@@ -92,6 +105,11 @@ async def baka(ctx, pers: discord.Member):
         embed = discord.Embed(description=write, color=0x00ff00)
         embed.set_image(url=url)
         await ctx.send(embed=embed, delete_after=10)
+@baka.error
+async def on_arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+        
 @bot.command(pass_context = True)
 async def secret(ctx):
     url_random = [
@@ -111,11 +129,6 @@ async def secret(ctx):
     embed.set_image(url=url)
     await ctx.send(embed=embed, delete_after=10)
 
-@bot.event
-async def arg(ctx, error):
-    if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
-        
 #конец действий
 
 token = os.environ.get('BOT_TOKEN')
