@@ -37,6 +37,30 @@ async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send('нужно упомянуть человека!')
 
+@bot.command(pass_context=True)
+async def sex(ctx, pers: discord.Member):
+    url_random = ('https://media.discordapp.net/attachments/426084205395574784/676864320511934474/Touch.gif',
+                  'https://media.discordapp.net/attachments/426084205395574784/676816594189549589/sex.gif')
+    url = random.choice(url_random)
+    author = ctx.author
+    write_random = ('**{} домогается до {}**'.format(author.mention, pers.mention),
+                    '**Ох... как же это пошло, {} схватил {} за интимное место**'.format(author.mention, pers.mention),
+                    '**{} поддался животным инстинктам и поймал - {}**'.format(author.mention, pers.mention),
+                    '**Кажется, {} требуется секс от {}**'.format(author.mention, pers.mention),
+                    '**{} хочет почебурекаться с {}**'.format(author.mention, pers.mention))
+    write = random.choice(write_random)
+    embed = discord.Embed(description=write, color=0x00ff00)
+    embed.set_image(url=url)
+    await ctx.channel.purge(limit=1)
+    await ctx.send(embed=embed, delete_after=15)
+
+
+
+@sex.error
+async def on_arg(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('нужно упомянуть человека!')
+
 
 @bot.command(pass_context=True)
 async def kiss(ctx, pers: discord.Member):
