@@ -27,10 +27,8 @@ async def huge(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge
     await ctx.send(embed=embed, delete_after=15)
-
-
 
 @huge.error
 async def on_arg(ctx, error):
@@ -53,8 +51,6 @@ async def sex(ctx, pers: discord.Member):
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
-
-
 
 @sex.error
 async def on_arg(ctx, error):
@@ -81,7 +77,7 @@ async def kiss(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge
     await ctx.send(embed=embed, delete_after=15)
 
 
@@ -109,7 +105,7 @@ async def beat(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge
     await ctx.send(embed=embed, delete_after=15)
 
 
@@ -137,7 +133,7 @@ async def baka(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge
     await ctx.send(embed=embed, delete_after=15)
 
 
@@ -165,9 +161,12 @@ async def secret(ctx):
     write = write[y]
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge
     await ctx.send(embed=embed, delete_after=15)
 
+
+# конец действий
+# команды модеров
 @bot.command(pass_context=True)
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, num=5):
@@ -179,7 +178,14 @@ async def bug_clear(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send('у вас недостаточно прав', delete_after=10)
 
-# конец действий
+#конец команд модеров
+
+@bot.command(pass_context=True)
+async def rnum(ctx):
+    number = random.choice(range(1, 7))
+    await ctx.channel.purge
+    await ctx.send(number, delete_after=5)
+
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(token)
