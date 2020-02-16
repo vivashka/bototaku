@@ -184,7 +184,7 @@ async def bug_clear(ctx, error):
 async def rnum(ctx):
     number = random.choice(range(1, 7))
     await ctx.channel.purge(limit=1)
-    await ctx.send(number, delete_after=5)
+    await ctx.send(number, delete_after=60)
 
 
 token = os.environ.get('BOT_TOKEN')
