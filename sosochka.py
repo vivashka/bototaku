@@ -168,7 +168,16 @@ async def secret(ctx):
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
 
+@bot.command(pass_context=True)
+@commands.has_permissions(manage_messages=True)
+async def clear(ctx, num=5):
+    await ctx.channel.purge(limit=num)
+    await ctx.send('сообщения удалены', delete_after=10)
 
+@clear.error
+async def bug_clear(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send('у вас недостаточно прав', delete_after=10)
 
 # конец действий
 
