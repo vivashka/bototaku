@@ -177,54 +177,6 @@ async def bug_clear(ctx, error):
 
 #конец команд модеров
 
-# reaction
-
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def reaction(ctx, role_ids: str, emoji_ids: str, msg_ids: int):
-    global role_name, emoji_name, msg_id
-    role_name = role_ids
-    emoji_name = emoji_ids
-    msg_id = msg_ids
-    await ctx.send('лайк', delete_after=10)
-
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def reaction_remove(ctx, role_ids: str, emoji_ids: str, msg_ids: int):
-    global role_name
-    global emoji_name
-    global msg_id
-    role_name = ''
-    emoji_name = ''
-    msg_id = ''
-    await ctx.send('дизлайк', delete_after=10)
-
-@bot.event
-async def on_raw_reaction_add(payload):
-    message_id = payload.message_id
-    user_id = payload.user_id
-    if message_id == msg_id:
-        guild_id = payload.guild_id
-        guild = bot.get_guild(guild_id)
-        if emoji_name in str(payload.emoji.name):
-            member = guild.get_member(user_id)
-            role = discord.utils.get(guild.roles, name=role_name)
-            await member.add_roles(role)
-
-@bot.event
-async def on_raw_reaction_remove(payload):
-    message_id = payload.message_id
-    user_id = payload.user_id
-    if message_id == msg_id:
-        guild_id = payload.guild_id
-        guild = bot.get_guild(guild_id)
-        if emoji_name in str(payload.emoji.name):
-            member = guild.get_member(user_id)
-            role = discord.utils.get(guild.roles, name=role_name)
-            await member.remove_roles(role)
-
-# end reaction
-
 # just for fun
 @bot.command(pass_context=True)
 async def rnum(ctx):
@@ -233,5 +185,6 @@ async def rnum(ctx):
     await ctx.send(number, delete_after=60)
 
 #end - just for fun
+
 token = os.environ.get('BOT_TOKEN')
 bot.run(token)
