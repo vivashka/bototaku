@@ -4,11 +4,10 @@ import random
 import os
 
 bot = commands.Bot(command_prefix='=')
-
 client = discord.Client()
 
-
 # Начало действий
+
 @bot.command(pass_context=True)
 async def huge(ctx, pers: discord.Member):
     url_random = ('https://animegif.ru/up/photos/album/oct17/171023_8359.gif',
@@ -34,6 +33,7 @@ async def huge(ctx, pers: discord.Member):
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send('нужно упомянуть человека!')
+
 
 @bot.command(pass_context=True)
 async def sex(ctx, pers: discord.Member):
@@ -80,7 +80,6 @@ async def kiss(ctx, pers: discord.Member):
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
 
-
 @kiss.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
@@ -107,7 +106,6 @@ async def beat(ctx, pers: discord.Member):
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
-
 
 @beat.error
 async def on_arg(ctx, error):
@@ -136,15 +134,13 @@ async def baka(ctx, pers: discord.Member):
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
 
-
-
 @baka.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send('нужно упомянуть человека!')
 
 
-@bot.command(pass_context=True)
+        @bot.command(pass_context=True)
 async def secret(ctx):
     url_random = [
         'https://animehub.cc/wp-content/uploads/2019/08/Anime-Anime-Gifki-senko-sewayaki-kitsune-no-senko-san-sewayaki-kitsune-no-senko-san.gif',
@@ -164,9 +160,10 @@ async def secret(ctx):
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=embed, delete_after=15)
 
-
 # конец действий
+
 # команды модеров
+
 @bot.command(pass_context=True)
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, num=5):
@@ -180,12 +177,61 @@ async def bug_clear(ctx, error):
 
 #конец команд модеров
 
+# reaction
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def reaction(ctx, role_ids: str, emoji_ids: str, msg_ids: int):
+    global role_name, emoji_name, msg_id
+    role_name = role_ids
+    emoji_name = emoji_ids
+    msg_id = msg_ids
+    await ctx.send('лайк', delete_after=10)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def reaction_remove(ctx, role_ids: str, emoji_ids: str, msg_ids: int):
+    global role_name
+    global emoji_name
+    global msg_id
+    role_name = ''
+    emoji_name = ''
+    msg_id = ''
+    await ctx.send('дизлайк', delete_after=10)
+
+@bot.event
+async def on_raw_reaction_add(payload):
+    message_id = payload.message_id
+    user_id = payload.user_id
+    if message_id == msg_id:
+        guild_id = payload.guild_id
+        guild = bot.get_guild(guild_id)
+        if emoji_name in str(payload.emoji.name):
+            member = guild.get_member(user_id)
+            role = discord.utils.get(guild.roles, name=role_name)
+            await member.add_roles(role)
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    message_id = payload.message_id
+    user_id = payload.user_id
+    if message_id == msg_id:
+        guild_id = payload.guild_id
+        guild = bot.get_guild(guild_id)
+        if emoji_name in str(payload.emoji.name):
+            member = guild.get_member(user_id)
+            role = discord.utils.get(guild.roles, name=role_name)
+            await member.remove_roles(role)
+
+# end reaction
+
+# just for fun
 @bot.command(pass_context=True)
 async def rnum(ctx):
     number = random.choice(range(1, 7))
     await ctx.channel.purge(limit=1)
     await ctx.send(number, delete_after=60)
 
-
+#end - just for fun
 token = os.environ.get('BOT_TOKEN')
 bot.run(token)
