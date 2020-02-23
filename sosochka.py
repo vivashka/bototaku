@@ -119,7 +119,8 @@ async def baka(ctx, pers: discord.Member):
                   'https://gifimage.net/wp-content/uploads/2017/09/baka-gif-4.gif',
                   'https://anime-chan.me/uploads/posts/2015-07/1435986861_tumblr_nqwk1u0lht1ua4ow2o1_500.gif',
                   'https://thumbs.gfycat.com/ConcreteVibrantDalmatian-size_restricted.gif',
-                  'https://i.gifer.com/GvWY.gif')
+                  'https://i.gifer.com/GvWY.gif',
+                  'https://media.discordapp.net/attachments/426084205395574784/678992099164553246/0_0.gif')
     url = random.choice(url_random)
     author = ctx.author
     write_random = ('**{} разослился на {}**'.format(author.mention, pers.mention),
