@@ -186,6 +186,5 @@ async def rnum(ctx):
     await ctx.send(number, delete_after=60)
 
 
-# token = os.environ.get('BOT_TOKEN')
-token = 'NjY1NTQ2OTg2MDU2ODQzMjc1.XlFRSg.P2068Uhc5-scF05TgWslYvd4Aok'
+token = os.environ.get('BOT_TOKEN')
 bot.run(token)
