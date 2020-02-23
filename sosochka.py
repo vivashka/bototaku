@@ -27,7 +27,7 @@ async def huge(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
 @huge.error
@@ -50,7 +50,7 @@ async def sex(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
 @sex.error
@@ -64,9 +64,7 @@ async def kiss(ctx, pers: discord.Member):
     url_random = ('https://i.gifer.com/2Ugo.gif',
                   'https://i.pinimg.com/originals/99/c4/18/99c41869ba1551575aefd9c8ffc533de.gif',
                   'https://i.pinimg.com/originals/b0/85/98/b08598aa7bf906bbf298dc067820436e.gif',
-                  'http://99px.ru/sstorage/86/2015/04/image_86060415165552581631.gif',
-
-                  )
+                  'http://99px.ru/sstorage/86/2015/04/image_86060415165552581631.gif')
     url = random.choice(url_random)
     author = ctx.author
     write_random = ('**{} поцеловал {}**'.format(author.mention, pers.mention),
@@ -78,7 +76,7 @@ async def kiss(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
 
@@ -94,8 +92,7 @@ async def beat(ctx, pers: discord.Member):
                   'https://i.gifer.com/7zBH.gif',
                   'https://i.gifer.com/777c.gif',
                   'https://data.whicdn.com/images/218727150/original.gif',
-                  'https://i.pinimg.com/originals/c0/be/39/c0be39358dd4b11101f4f23241ddbe3c.gif'
-                  )
+                  'https://i.pinimg.com/originals/c0/be/39/c0be39358dd4b11101f4f23241ddbe3c.gif')
     url = random.choice(url_random)
     author = ctx.author
     write_random = ('**{} ударил {}, кричя при этом: "НЫЫЫАААААААА"**'.format(author.mention, pers.mention),
@@ -106,7 +103,7 @@ async def beat(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
 
@@ -122,8 +119,7 @@ async def baka(ctx, pers: discord.Member):
                   'https://gifimage.net/wp-content/uploads/2017/09/baka-gif-4.gif',
                   'https://anime-chan.me/uploads/posts/2015-07/1435986861_tumblr_nqwk1u0lht1ua4ow2o1_500.gif',
                   'https://thumbs.gfycat.com/ConcreteVibrantDalmatian-size_restricted.gif',
-                  'https://i.gifer.com/GvWY.gif'
-                  )
+                  'https://i.gifer.com/GvWY.gif')
     url = random.choice(url_random)
     author = ctx.author
     write_random = ('**{} разослился на {}**'.format(author.mention, pers.mention),
@@ -134,7 +130,7 @@ async def baka(ctx, pers: discord.Member):
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
 
@@ -160,11 +156,11 @@ async def secret(ctx):
     write = write[y]
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=25)
 
-
 # конец действий
+
 # команды модеров
 @bot.command(pass_context=True)
 @commands.has_permissions(manage_messages=True)
@@ -182,7 +178,7 @@ async def bug_clear(ctx, error):
 @bot.command(pass_context=True)
 async def rnum(ctx):
     number = random.choice(range(1, 7))
-    await ctx.channel.purge(limit=1)
+    await ctx.message.delete()
     await ctx.send(number, delete_after=60)
 
 
