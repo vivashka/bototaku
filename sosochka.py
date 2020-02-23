@@ -4,10 +4,11 @@ import random
 import os
 
 bot = commands.Bot(command_prefix='=')
+
 client = discord.Client()
 
-# Начало действий
 
+# Начало действий
 @bot.command(pass_context=True)
 async def huge(ctx, pers: discord.Member):
     url_random = ('https://animegif.ru/up/photos/album/oct17/171023_8359.gif',
@@ -27,30 +28,30 @@ async def huge(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
 
 @huge.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send('нужно упомянуть человека!')
 
-
 @bot.command(pass_context=True)
 async def sex(ctx, pers: discord.Member):
     url_random = ('https://media.discordapp.net/attachments/426084205395574784/676864320511934474/Touch.gif',
-                  'https://media.discordapp.net/attachments/426084205395574784/676816594189549589/sex.gif')
+                  'https://media.discordapp.net/attachments/426084205395574784/676816594189549589/sex.gif'
+                  'https://i.kym-cdn.com/photos/images/newsfeed/000/764/605/d93.gif')
     url = random.choice(url_random)
     author = ctx.author
     write_random = ('**{} домогается до {}**'.format(author.mention, pers.mention),
                     '**Ох... как же это пошло, {} схватил {} за интимное место**'.format(author.mention, pers.mention),
                     '**{} поддался животным инстинктам и поймал - {}**'.format(author.mention, pers.mention),
-                    '**Кажется, {} требуется секс от {}**'.format(author.mention, pers.mention),
+                    '**Кажется, {} требует секс от {}**'.format(author.mention, pers.mention),
                     '**{} хочет почебурекаться с {}**'.format(author.mention, pers.mention))
     write = random.choice(write_random)
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
 
 @sex.error
 async def on_arg(ctx, error):
@@ -78,7 +79,8 @@ async def kiss(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
+
 
 @kiss.error
 async def on_arg(ctx, error):
@@ -105,7 +107,8 @@ async def beat(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
+
 
 @beat.error
 async def on_arg(ctx, error):
@@ -132,7 +135,9 @@ async def baka(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
+
+
 
 @baka.error
 async def on_arg(ctx, error):
@@ -140,30 +145,27 @@ async def on_arg(ctx, error):
         await ctx.send('нужно упомянуть человека!')
 
 
-        @bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def secret(ctx):
     url_random = [
         'https://animehub.cc/wp-content/uploads/2019/08/Anime-Anime-Gifki-senko-sewayaki-kitsune-no-senko-san-sewayaki-kitsune-no-senko-san.gif',
-        'https://66.media.tumblr.com/c7509993bf557309fb945276500d5bc8/tumblr_pvbekvDBVY1usc9y9o9_500.gif'
-    ]
+        'https://66.media.tumblr.com/c7509993bf557309fb945276500d5bc8/tumblr_pvbekvDBVY1usc9y9o9_500.gif']
     author = ctx.author
     write = ['Милая кицуне заботится о {}'.format(author.mention),
-             'Внутри страха живёт сила!'
-             ]
-    url_object = int(len(url_random)) - 1
-    x = (0, url_object)
+             'Внутри страха живёт сила!']
+    url_object = len(url_random)
+    x = (range(url_object))
     y = random.choice(x)
     url = url_random[y]
     write = write[y]
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.channel.purge(limit=1)
-    await ctx.send(embed=embed, delete_after=15)
+    await ctx.send(embed=embed, delete_after=25)
+
 
 # конец действий
-
 # команды модеров
-
 @bot.command(pass_context=True)
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, num=5):
@@ -177,14 +179,13 @@ async def bug_clear(ctx, error):
 
 #конец команд модеров
 
-# just for fun
 @bot.command(pass_context=True)
 async def rnum(ctx):
     number = random.choice(range(1, 7))
     await ctx.channel.purge(limit=1)
     await ctx.send(number, delete_after=60)
 
-#end - just for fun
 
-token = os.environ.get('BOT_TOKEN')
+# token = os.environ.get('BOT_TOKEN')
+token = 'NjY1NTQ2OTg2MDU2ODQzMjc1.XlFRSg.P2068Uhc5-scF05TgWslYvd4Aok'
 bot.run(token)
