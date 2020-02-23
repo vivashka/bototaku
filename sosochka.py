@@ -146,7 +146,8 @@ async def on_arg(ctx, error):
 async def secret(ctx):
     url_random = [
         'https://animehub.cc/wp-content/uploads/2019/08/Anime-Anime-Gifki-senko-sewayaki-kitsune-no-senko-san-sewayaki-kitsune-no-senko-san.gif',
-        'https://66.media.tumblr.com/c7509993bf557309fb945276500d5bc8/tumblr_pvbekvDBVY1usc9y9o9_500.gif']
+        'https://66.media.tumblr.com/c7509993bf557309fb945276500d5bc8/tumblr_pvbekvDBVY1usc9y9o9_500.gif',
+        'https://media.discordapp.net/attachments/426084205395574784/679019793793417255/Vovachke.gif']
     author = ctx.author
     write = ['Милая кицуне заботится о {}'.format(author.mention),
              'Внутри страха живёт сила!']
