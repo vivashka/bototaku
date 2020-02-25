@@ -28,7 +28,7 @@ async def huge(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 @huge.error
 async def on_arg(ctx, error):
@@ -51,7 +51,7 @@ async def sex(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 @sex.error
 async def on_arg(ctx, error):
@@ -77,7 +77,7 @@ async def kiss(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 
 @kiss.error
@@ -104,7 +104,7 @@ async def beat(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 
 @beat.error
@@ -132,7 +132,7 @@ async def baka(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 
 
@@ -162,7 +162,7 @@ async def secret(ctx):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=25)
+    await ctx.send(embed=embed, delete_after=30)
 
 # конец действий
 
