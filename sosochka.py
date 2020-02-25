@@ -147,10 +147,13 @@ async def secret(ctx):
     url_random = [
         'https://animehub.cc/wp-content/uploads/2019/08/Anime-Anime-Gifki-senko-sewayaki-kitsune-no-senko-san-sewayaki-kitsune-no-senko-san.gif',
         'https://66.media.tumblr.com/c7509993bf557309fb945276500d5bc8/tumblr_pvbekvDBVY1usc9y9o9_500.gif',
-        'https://media.discordapp.net/attachments/426084205395574784/679019793793417255/Vovachke.gif']
+        'https://media.discordapp.net/attachments/426084205395574784/679019793793417255/Vovachke.gif',
+        'https://media.discordapp.net/attachments/426084205395574784/679046074975125514/Smer5t.gif']
     author = ctx.author
     write = ['Милая кицуне заботится о {}'.format(author.mention),
-             'Внутри страха живёт сила!']
+             'Внутри страха живёт сила!',
+             '...Ня...',
+             'А в начале пути мало кто в нас верил... не так ли?']
     url_object = len(url_random)
     x = (range(url_object))
     y = random.choice(x)
