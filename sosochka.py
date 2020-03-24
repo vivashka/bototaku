@@ -4,9 +4,29 @@ import random
 import os
 
 bot = commands.Bot(command_prefix='=')
+bot.remove_command("help")
 
 client = discord.Client()
 
+# help commands
+@bot.command()
+async def help(ctx):
+# help commands
+@bot.command()
+async def help(ctx):
+    embed = discord.Embed(description='''Важно заметить, что команды-гифки работают только с именами участников сервера или их упоминанием!!!''',color=0x00ff00)
+    embed.add_field(name='**kiss**', value='поцелуй!', inline=True)
+    embed.add_field(name='**huge**', value='объятия!', inline=True)
+    embed.add_field(name='**sex**', value='Да... Да... Это то самое!', inline=True)
+    embed.add_field(name='**baka**', value='ты идиот...', inline=True)
+    embed.add_field(name='**beat**', value='помянем...', inline=True)
+    embed.add_field(name='~~secret~~',value='~~???~~', inline=True)
+    embed.add_field(name='**clear**',value='очистка сообщений. Работает если вы имеете права - управелние сообщениями', inline=False)
+    embed.add_field(name='**rnum**', value='Ну что поделать... Меня экплуатируют...', inline=True)
+    embed.add_field(name='**reaction**', value='добавляет роль к эмодзи в определённом сообщении\nпример:\n!reaction 678920410716176410(id роли) osu(название эмодзи) 676783533867401216(id сообщения)', inline=False)
+    embed.set_image(url='https://99px.ru/sstorage/86/2018/12/image_8618121812560148847.gif')
+    await ctx.send(embed=embed, delete_after=90)
+# end help commands
 
 # Начало действий
 @bot.command(pass_context=True)
@@ -179,6 +199,54 @@ async def bug_clear(ctx, error):
         await ctx.send('у вас недостаточно прав', delete_after=10)
 
 #конец команд модеров
+
+# reaction
+bot.messages = []
+
+@bot.command()
+async def counter(ctx):
+    await ctx.send(bot.messages)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def reaction(ctx, role_ids, emoji_ids, msg_ids):
+    global emoji_roles
+    if int(msg_ids) in bot.messages:
+        bot.messages.remove(int(msg_ids))
+        bot.messages.append(int(msg_ids))
+    else:
+        bot.messages.append(int(msg_ids))
+    emoji_roles = {}
+    emoji_roles.setdefault(emoji_ids, int(role_ids))
+    await ctx.send('лайк', delete_after=10)
+
+@bot.event
+async def on_raw_reaction_add(payload):
+    message_id = payload.message_id
+    user_id = payload.user_id
+    if int(message_id) in bot.messages:
+        guild_id = payload.guild_id
+        guild = bot.get_guild(guild_id)
+        if str(payload.emoji.name) in emoji_roles:
+            roles  = emoji_roles.get(str(payload.emoji.name))
+            member = guild.get_member(user_id)
+            role = guild.get_role(roles)
+            await member.add_roles(role)
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    message_id = payload.message_id
+    user_id = payload.user_id
+    if int(message_id) in bot.messages:
+        guild_id = payload.guild_id
+        guild = bot.get_guild(guild_id)
+        if str(payload.emoji.name) in emoji_roles:
+            roles  = emoji_roles.get(str(payload.emoji.name))
+            member = guild.get_member(user_id)
+            role = guild.get_role(roles)
+            await member.remove_roles(role)
+
+# end reaction
 
 @bot.command(pass_context=True)
 async def rnum(ctx):
