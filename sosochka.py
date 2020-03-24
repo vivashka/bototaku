@@ -11,9 +11,6 @@ client = discord.Client()
 # help commands
 @bot.command()
 async def help(ctx):
-# help commands
-@bot.command()
-async def help(ctx):
     embed = discord.Embed(description='''Важно заметить, что команды-гифки работают только с именами участников сервера или их упоминанием!!!''',color=0x00ff00)
     embed.add_field(name='**kiss**', value='поцелуй!', inline=True)
     embed.add_field(name='**huge**', value='объятия!', inline=True)
