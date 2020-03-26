@@ -3,7 +3,7 @@ from discord.ext import commands
 import random
 import os
 
-bot = commands.Bot(command_prefix='=')
+bot = commands.Bot(command_prefix='#')
 bot.remove_command("help")
 
 client = discord.Client()
@@ -53,7 +53,7 @@ async def hug(ctx, pers: discord.Member):
 @hug.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
+        await ctx.send('нужно упомянуть человека!', delete_after=30)
 
 @bot.command(pass_context=True)
 async def sex(ctx, pers: discord.Member):
@@ -76,7 +76,7 @@ async def sex(ctx, pers: discord.Member):
 @sex.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
+        await ctx.send('нужно упомянуть человека!', delete_after=30)
 
 
 @bot.command(pass_context=True)
@@ -103,7 +103,7 @@ async def kiss(ctx, pers: discord.Member):
 @kiss.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
+        await ctx.send('нужно упомянуть человека!', delete_after=30)
 
 
 @bot.command(pass_context=True)
@@ -130,7 +130,7 @@ async def beat(ctx, pers: discord.Member):
 @beat.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
+        await ctx.send('нужно упомянуть человека!', delete_after=30)
 
 
 @bot.command(pass_context=True)
@@ -159,7 +159,7 @@ async def baka(ctx, pers: discord.Member):
 @baka.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
-        await ctx.send('нужно упомянуть человека!')
+        await ctx.send('нужно упомянуть человека!', delete_after=30)
 
 
 @bot.command(pass_context=True)
