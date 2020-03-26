@@ -13,7 +13,7 @@ client = discord.Client()
 async def help(ctx):
     embed = discord.Embed(description='''Важно заметить, что команды-гифки работают только с именами участников сервера или их упоминанием!!!''',color=0x00ff00)
     embed.add_field(name='**kiss**', value='поцелуй!', inline=True)
-    embed.add_field(name='**huge**', value='объятия!', inline=True)
+    embed.add_field(name='**hug**', value='объятия!', inline=True)
     embed.add_field(name='**sex**', value='Да... Да... Это то самое!', inline=True)
     embed.add_field(name='**baka**', value='ты идиот...', inline=True)
     embed.add_field(name='**beat**', value='помянем...', inline=True)
@@ -30,7 +30,7 @@ async def help(ctx):
 
 # Начало действий
 @bot.command(pass_context=True)
-async def huge(ctx, pers: discord.Member):
+async def hug(ctx, pers: discord.Member):
     url_random = ('https://animegif.ru/up/photos/album/oct17/171023_8359.gif',
                   'https://i.gifer.com/G8Vg.gif',
                   'https://1.bp.blogspot.com/-Z1d31ECXTqM/V-QcrI4iNsI/AAAAAAAADzo/6bgaRuLCxrgV76zEaeqyq92Tu3gO2uL3gCLcB/s400/katana.gif',
@@ -50,7 +50,7 @@ async def huge(ctx, pers: discord.Member):
     await ctx.message.delete()
     await ctx.send(embed=embed, delete_after=30)
 
-@huge.error
+@hug.error
 async def on_arg(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send('нужно упомянуть человека!')
