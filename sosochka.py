@@ -8,6 +8,12 @@ bot.remove_command("help")
 
 client = discord.Client()
 
+@bot.event
+async def on_ready():
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('prefix = # '))
+    print('bot is ready!')
+
+
 # help commands
 @bot.command()
 async def help(ctx):
