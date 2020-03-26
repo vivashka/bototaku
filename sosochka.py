@@ -18,9 +18,12 @@ async def help(ctx):
     embed.add_field(name='**baka**', value='ты идиот...', inline=True)
     embed.add_field(name='**beat**', value='помянем...', inline=True)
     embed.add_field(name='~~secret~~',value='~~???~~', inline=True)
-    embed.add_field(name='**clear**',value='очистка сообщений. Работает если вы имеете права - управелние сообщениями', inline=False)
+    embed.add_field(name='**clear**',value='очистка сообщений. Работает если вы имеете права - управелние сообщениями\nТолко с правами - manage message', inline=False)
     embed.add_field(name='**rnum**', value='Ну что поделать... Меня экплуатируют...', inline=True)
-    embed.add_field(name='**reaction**', value='добавляет роль к эмодзи в определённом сообщении\nпример:\n!reaction 678920410716176410(id роли) osu(название эмодзи) 676783533867401216(id сообщения)', inline=False)
+    embed.add_field(name='**reaction**', value='добавляет роль к эмодзи в определённом сообщении\nпример:\n!reaction 678920410716176410(id роли) :osu:(название эмодзи) 676783533867401216(id сообщения)\nТолько для админа', inline=False)
+    embed.add_field(name='**del_rection**', value='удаляет эмодзи и роль из сообщения')
+    embed.add_field(name='**join**', value='создаёт роль, для людей, которые заходят на сервер\nпример:\n!join user(название роли)\nТолько для админа', inline=False)
+    embed.add_field(name='**join**', value='удаляет всё, что вы написали в команде join')
     embed.set_image(url='https://99px.ru/sstorage/86/2018/12/image_8618121812560148847.gif')
     await ctx.send(embed=embed, delete_after=90)
 # end help commands
@@ -198,6 +201,7 @@ async def bug_clear(ctx, error):
 #конец команд модеров
 
 # reaction
+
 bot.messages = []
 
 @bot.command()
@@ -215,7 +219,15 @@ async def reaction(ctx, role_ids, emoji_ids, msg_ids):
         bot.messages.append(int(msg_ids))
     emoji_roles = {}
     emoji_roles.setdefault(emoji_ids, int(role_ids))
-    await ctx.send('лайк', delete_after=10)
+    await ctx.send('Роль добавлена!', delete_after=10)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def del_reaction(ctx, role_ids, emoji_ids, msg_ids):
+    global emoji_roles
+    emoji_roles = {}
+    emoji_roles.pop(emoji_ids, int(role_ids))
+    await ctx.send('Роль и эмодзи удалена удвлена!', delete_after=10)
 
 @bot.event
 async def on_raw_reaction_add(payload):
@@ -244,6 +256,35 @@ async def on_raw_reaction_remove(payload):
             await member.remove_roles(role)
 
 # end reaction
+
+
+#зачисление в ряды
+bot.guild_role = []
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def join(ctx, server_role):
+    if server_role in bot.guild_role:
+        bot.guild_role.remove(server_role)   
+        bot.guild_role.append(server_role)
+    else:
+        bot.guild_role.append(server_role)
+    await ctx.send('роль добавлена', delete_after=15)
+
+@bot.command()
+async def del_join(ctx, server_role):
+    if server_role in bot.guild_role:
+        bot.guild_role.remove(server_role)
+        ctx.send('роль удалена', delete_after=30)
+    else:
+        ctx.send('Этой роли итак нет', delete_after=30)
+
+@bot.event
+async def on_member_join(member):
+    for role in bot.guild_role:
+        roles = discord.utils.get(member.guild.roles, name=role)
+        await member.add_roles(roles)
+#end - зачисление в ряды
 
 @bot.command(pass_context=True)
 async def rnum(ctx):
