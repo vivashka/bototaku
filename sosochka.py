@@ -29,7 +29,7 @@ async def help(ctx):
     embed.add_field(name='**reaction**', value='добавляет роль к эмодзи в определённом сообщении\nпример:\n!reaction 678920410716176410(id роли) :osu:(название эмодзи) 676783533867401216(id сообщения)\nТолько для админа', inline=False)
     embed.add_field(name='**del_rection**', value='удаляет эмодзи и роль из сообщения')
     embed.add_field(name='**join**', value='создаёт роль, для людей, которые заходят на сервер\nпример:\n!join user(название роли)\nТолько для админа', inline=False)
-    embed.add_field(name='**join**', value='удаляет всё, что вы написали в команде join')
+    embed.add_field(name='**del_join**', value='удаляет всё, что вы написали в команде join')
     embed.set_image(url='https://99px.ru/sstorage/86/2018/12/image_8618121812560148847.gif')
     await ctx.send(embed=embed, delete_after=90)
 # end help commands
@@ -54,7 +54,7 @@ async def hug(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 @hug.error
 async def on_arg(ctx, error):
@@ -77,7 +77,7 @@ async def sex(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 @sex.error
 async def on_arg(ctx, error):
@@ -103,7 +103,7 @@ async def kiss(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 
 @kiss.error
@@ -130,7 +130,7 @@ async def beat(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 
 @beat.error
@@ -158,7 +158,7 @@ async def baka(ctx, pers: discord.Member):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 
 
@@ -188,7 +188,7 @@ async def secret(ctx):
     embed = discord.Embed(description=write, color=0x00ff00)
     embed.set_image(url=url)
     await ctx.message.delete()
-    await ctx.send(embed=embed, delete_after=30)
+    await ctx.send(embed=embed, delete_after=90)
 
 # конец действий
 
